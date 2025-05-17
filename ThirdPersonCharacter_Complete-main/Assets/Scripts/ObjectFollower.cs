@@ -7,6 +7,7 @@ public class ObjectFollower : MonoBehaviour
     public Transform follow;
     public Vector3 offset;
     public float followSpeed;
+
     void Update()
     {
         if (followSpeed >= 0)

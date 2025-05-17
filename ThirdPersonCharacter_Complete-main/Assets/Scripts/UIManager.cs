@@ -15,13 +15,10 @@ public class UIManager : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         canvasRect = GetComponent<RectTransform>();
+
+        cam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnGUI()
     {

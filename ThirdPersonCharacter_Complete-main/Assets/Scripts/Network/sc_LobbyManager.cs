@@ -20,4 +20,13 @@ public class sc_LobbyManager : MonoBehaviour
         NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
         NetworkManager.Singleton.StartHost();
     }
+
+    public async void JoinGame(string joinCode)
+    {
+        JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+        RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+        NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+        NetworkManager.Singleton.StartClient();
+    }
 }
