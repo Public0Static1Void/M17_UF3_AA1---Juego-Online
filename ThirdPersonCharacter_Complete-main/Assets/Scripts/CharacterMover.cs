@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(GroundDetector))]
-public class CharacterMover : MonoBehaviour
+public class CharacterMover : NetworkBehaviour
 {
     public Camera cam;
     public float movementAcceleration;
@@ -23,15 +24,30 @@ public class CharacterMover : MonoBehaviour
     Quaternion velocityRotation;
     Vector3 lastPos;
     Quaternion lastRot;
+
+    public RaycastLookAt realAimLookAt;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         gd = GetComponent<GroundDetector>();
         gd.groundedUp.AddListener(DroppedOff);
+
+        if (!IsOwner)
+        {
+            rb.isKinematic = true;
+            return;
+        }
+
+        UIManager.instance.realAimLookAt = realAimLookAt;
+        UIManager.instance.cam = Camera.main;
+        UIManager.instance.InitGUI();
     }
     private void Update()
     {
+        if (!IsOwner) return;
+
         if (gd.grounded && Input.GetButtonDown("Jump"))
         {
             rb.velocity = transform.up * jumpForce;
@@ -39,6 +55,8 @@ public class CharacterMover : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (!IsOwner) return;
+
         Velocity();
         Movement();
 

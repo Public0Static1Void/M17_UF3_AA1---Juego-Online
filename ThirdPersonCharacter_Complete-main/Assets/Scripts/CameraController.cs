@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : NetworkBehaviour
 {
     public Transform lookAt;
     public Camera cam;
@@ -19,15 +20,29 @@ public class CameraController : MonoBehaviour
     float distanceDesired;
     float distanceCurrent;
     public float distanceRecovery = 1;
+    [Header("Offset")]
+    public Vector3 offset;
     private void Start()
     {
+        if (!IsOwner)
+        {
+            cam.enabled = false; // Disable this camera on non-owners
+            return;
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
+
         if (cam == null)
             cam = Camera.main;
+
         verticalRotation = transform.localEulerAngles.x;
+
+        transform.localPosition = offset;
     }
     void Update()
     {
+        if (!IsOwner) return;
+
         float horizontal = Input.GetAxis("Mouse X") * sensitivity.x;
         transform.Rotate(Vector3.up, horizontal);
         float vertical = Input.GetAxis("Mouse Y") * sensitivity.y;
@@ -36,6 +51,8 @@ public class CameraController : MonoBehaviour
     }
     void LateUpdate()
     {
+        if (!IsOwner) return;
+
         Ray ray = new Ray(transform.position, cam.transform.position - transform.position);
         Debug.DrawRay(transform.position, ray.direction * distanceMax, Color.green);
         RaycastHit hit;

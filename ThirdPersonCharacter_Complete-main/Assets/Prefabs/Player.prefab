@@ -669,7 +669,7 @@ Transform:
   - {fileID: 528563554632270372}
   - {fileID: 5127148675330903468}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4433260374565344250
 Rigidbody:
@@ -740,6 +740,7 @@ MonoBehaviour:
   speedTurn: 10
   jumpForce: 5
   airSpeedFollowup: 1
+  realAimLookAt: {fileID: 6534328220655871066}
 --- !u!114 &7855572106417696216
 MonoBehaviour:
   m_ObjectHideFlags: 0

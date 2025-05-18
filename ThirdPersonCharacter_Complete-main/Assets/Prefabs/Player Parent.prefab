@@ -143,6 +143,7 @@ MonoBehaviour:
   distanceMax: 3
   distanceMin: 0.5
   distanceRecovery: 5
+  offset: {x: 0, y: 1, z: 0}
 --- !u!114 &5887151098852443801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   follow: {fileID: 1820218207415382127}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 1, z: 0}
   followSpeed: 10
 --- !u!1 &8161800974532186847
 GameObject:

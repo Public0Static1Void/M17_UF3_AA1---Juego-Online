@@ -6,21 +6,26 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance { get; private set; }
     public Camera cam;
     Canvas canvas;
     RectTransform canvasRect;
     public RectTransform realAim;
     public RaycastLookAt realAimLookAt;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         canvas = GetComponent<Canvas>();
         canvasRect = GetComponent<RectTransform>();
-
-        cam = Camera.main;
     }
 
 
-    private void OnGUI()
+    public void InitGUI()
     {
         Vector2 ViewportPosition = cam.WorldToViewportPoint(realAimLookAt.lookingAt);
         Vector2 WorldObject_ScreenPosition = new Vector2(

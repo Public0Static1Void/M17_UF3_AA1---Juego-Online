@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223378260f4b58841be96fff752ea2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room_field: {fileID: 0}
 --- !u!114 &52519587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16074,7 +16075,8 @@ MonoBehaviour:
     NetworkTransport: {fileID: 1671485292}
     PlayerPrefab: {fileID: 4315390858674893984, guid: 382bc3e174073a641b284261d6778703, type: 3}
     Prefabs:
-      NetworkPrefabsLists: []
+      NetworkPrefabsLists:
+      - {fileID: 11400000, guid: cc26abb7c9bb69e488ba558837238c63, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0

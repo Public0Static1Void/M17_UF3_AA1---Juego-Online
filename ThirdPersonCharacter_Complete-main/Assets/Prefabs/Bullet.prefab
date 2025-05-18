@@ -5140,9 +5140,8 @@ GameObject:
   - component: {fileID: 7837339008442031138}
   - component: {fileID: 8113625839577505537}
   - component: {fileID: 7661018759388145756}
-  - component: {fileID: 7493074417759840217}
-  - component: {fileID: 6475255157796675522}
-  - component: {fileID: 5541538227164395237}
+  - component: {fileID: 901520918320862040}
+  - component: {fileID: 6145825569489117901}
   m_Layer: 0
   m_Name: BulletProjectile
   m_TagString: Untagged
@@ -5319,7 +5318,7 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &7493074417759840217
+--- !u!114 &901520918320862040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5349,7 +5348,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &6475255157796675522
+--- !u!114 &6145825569489117901
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5361,26 +5360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5541538227164395237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2538248065045880314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &3810806582412894877
 GameObject:
   m_ObjectHideFlags: 0
