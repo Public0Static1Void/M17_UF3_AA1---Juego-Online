@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GenericGun : MonoBehaviour
+public class GenericGun : NetworkBehaviour
 {
     public int clipMax = 30;
     public int clipCurrent = 30;
@@ -24,12 +25,16 @@ public class GenericGun : MonoBehaviour
     Quaternion originalRotation;
     private void Start()
     {
+        if (!IsOwner) return;
+
         originalPosition = transform.localPosition;
         originalRotation = transform.localRotation;
     }
 
     void Update()
     {
+        if (!IsOwner) return;
+
         transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, positionRecover * Time.deltaTime);
         transform.localRotation = Quaternion.Lerp(transform.localRotation, originalRotation, rotationRecover * Time.deltaTime);
         if(clipCurrent > 0)
@@ -47,6 +52,8 @@ public class GenericGun : MonoBehaviour
     }
     public void Fire()
     {
+        if (!IsOwner) return;
+
         clipCurrent--;
         Destroy(Instantiate(bullet, firePoint.position, firePoint.rotation), 10);
         onFire.Invoke();
