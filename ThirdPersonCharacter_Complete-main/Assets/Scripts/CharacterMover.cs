@@ -10,11 +10,11 @@ public class CharacterMover : NetworkBehaviour
     public Camera cam;
     public float movementAcceleration;
     public float movementDeceleration;
-    Vector3 currentMov;
+    public Vector3 currentMov;
     public float speedMovement;
     public float speedTurn;
     public float jumpForce;
-    Rigidbody rb;
+    public Rigidbody rb;
     GroundDetector gd;
     public float airSpeedFollowup = 1f;
     float airSpeedFollowupCurrent;
@@ -36,7 +36,6 @@ public class CharacterMover : NetworkBehaviour
 
         if (!IsOwner)
         {
-            rb.isKinematic = true;
             return;
         }
 
