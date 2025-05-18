@@ -80,7 +80,7 @@ public class CharacterMover : NetworkBehaviour
     }
     void Movement()
     {
-        if (gd.grounded)
+        if (gd.grounded && !rb.isKinematic)
         {
             Vector3 mov = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             float magnitude = Mathf.Clamp01(mov.magnitude);
